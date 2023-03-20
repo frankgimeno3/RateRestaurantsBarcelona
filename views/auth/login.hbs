@@ -1,0 +1,31 @@
+<div id="login-form" class="sections">
+  <h1>Log In</h1>
+  <form action="/auth/login" method="POST" class="signUpClass">
+    <div>
+
+      <div class="divTitleandSearch">
+        <label class="formTitle">Username </label>
+        <input type="text" name="username" placeholder="Your username" class="PostFormBar" />
+
+      </div>
+      <div>
+        <label class="formTitle">Email </label>
+        <input type="email" name="email" placeholder="Your email" class="PostFormBar" />
+      </div>
+      <div>
+        <label class="formTitle">Password </label>
+        <input type="password" name="password" placeholder="Your password" class="PostFormBar" />
+
+      </div>
+      <div class="loginSignUpBar">
+        <button type="submit">Log In</button>
+
+        <a href="/auth/signup" class="LoginSign">Sign Up</a>
+
+        {{#if errorMessage}}
+        <p class="error">{{errorMessage}}</p>
+        {{/if}}
+      </div>
+    </div>
+  </form>
+</div>

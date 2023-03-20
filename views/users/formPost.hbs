@@ -1,0 +1,64 @@
+<div id="newPost" class="sections">
+<form action="/user/new-post" method="POST" enctype="multipart/form-data" id="newFormPostBox">
+  
+
+  <div >
+    
+    <label class="formTitle">Restaurante</label>
+    <Input name="restaurante"   class="PostFormBar" type="text">
+    </div>
+
+    <div >
+      <label class="formTitle" >Detalles</label>
+    <Input name="detalles"  class="PostFormBar" type="text">
+ 
+  </div >
+  <div >
+     <label class="formTitle">Location</label>
+        <input name="location" id="location"  class="PostFormBar" type="text" placeholder="Search..."/>
+  </div>
+
+<div >
+  <label class="formTitle"> Image  </label>
+<input  class="PostFormBar" type="file" name="foto" id="foto" />
+  </div>
+
+  <div class="publishButton ">
+    <button  class="btn btn-dark" type="submit" > Create new post </button>
+  </div>
+</form>
+</div>
+
+
+<script>
+    let autocomplete
+    function initAutocomplete() {
+        autocomplete = new google.maps.places.Autocomplete(
+            document.getElementById('location'),
+            {
+                types: [],
+                componentRestrictions: { 'country': ['ES'] },
+                fields: ["formatted_address", "geometry", "name"]
+            })
+        console.log("consolelog de autocomplete", xautocomplete)
+      
+
+
+        autocomplete.addListener('place_changed', onPlaceChanged)
+        function onPlaceChanged() {
+            let place = autocomplete.getPlace()
+
+            if (!place.geometry) {
+                document.getElementById('location').placeholder = 'Enter a place'
+            }
+            else {
+                document.getElementById("location").value = place.geometry.location.lat()
+                console.log(place)            
+            }
+        }
+    }
+</script>
+
+<script
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDh69OMV8YXAkrox9tLmH7PshwMX4X6V14&libraries=places&callback=initAutocomplete"> async defer
+    </script>
